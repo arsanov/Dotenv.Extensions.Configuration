@@ -7,9 +7,6 @@ on:
 jobs:
   build_dotnet_project:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     name: Build, test and upload dotnet artifact
     steps:
       - uses: actions/checkout@v3
