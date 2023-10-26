@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../Source/dotenv.extensions.csproj" />
+    <ProjectReference Include="../Source/Dotenv.Extensions.Configuration.csproj" />
   </ItemGroup>
 
 </Project>

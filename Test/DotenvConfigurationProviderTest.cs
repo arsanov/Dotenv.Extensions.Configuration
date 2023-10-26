@@ -22,6 +22,7 @@ namespace Test
             configuration["AnotherValue_InnerValue"].Should().Be("asd");
             configuration["AnotherValue:InnerValue"].Should().Be("qwe");
             configuration["AnotherValue__InnerValue"].Should().BeNull();
+            configuration["AnotherValue:InnerValue:0"].Should().Be("qwe\"=zxc");
         }
 
         [Fact]
