@@ -24,7 +24,7 @@ jobs:
 
       - name: Build
         run: |
-          dotnet build -c Release ./Source/Dotenv.Extensions.Configuration.csproj
+          dotnet build -c Release ./Source/Dotenv.Extensions.Configuration.csproj -p:RepositoryCommit=${{ github.sha }}
 
       - name: Test
         run: |
