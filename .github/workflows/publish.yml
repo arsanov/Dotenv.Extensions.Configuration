@@ -1,16 +1,19 @@
 name: 'Build and Test'
 on:
-  push:
+  workflow_dispatch:
 
 jobs:
-
   build_dotnet_project:
+    uses: arsanov/Dotenv.Extensions.Configuration/.github/workflows/build.yml@master
+    secrets: inherit
+
+  publish_dotnet_project:
     environment: main
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    name: Build, test and upload dotnet artifact
+    name: Publish nuget package
     steps:
       - uses: actions/download-artifact@v3
         with:
