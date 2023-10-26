@@ -7,6 +7,9 @@
     <Version>1.0.0</Version>
     <Authors>Viktor Arsanov</Authors>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/arsanov/Dotenv.Extensions.Configuration</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/arsanov/Dotenv.Extensions.Configuration.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
