@@ -6,6 +6,7 @@
     <PackageId>Dotenv.Extensions.Configuration</PackageId>
     <Version>1.0.0</Version>
     <Authors>Viktor Arsanov</Authors>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
