@@ -25,7 +25,7 @@ jobs:
 
       - name: Publish nupkg
         run: |
-          dotnet nuget push Dotenv.Extensions.Configuration.1.0.0.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
+          dotnet nuget push Dotenv.Extensions.Configuration.1.0.1.nupkg --api-key ${{ secrets.NUGET_API_KEY }} --source https://api.nuget.org/v3/index.json
 
 
 
