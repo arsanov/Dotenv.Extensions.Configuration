@@ -46,6 +46,30 @@ namespace Test
         }
 
         [Fact]
+        public void TestCaseInsensitive()
+        {
+            var builder = new ConfigurationBuilder();
+
+            builder.AddDotenvFile("Assets/case_sensitivity.env");
+            var configuration = builder.Build();
+
+            configuration["TEST1"].Should().Be("Test1");
+            // when there is same key(but different case - case insensitive) the value is overwritten
+            configuration["TEST1"].Should().NotBe("TEST1");
+            configuration["Test1"].Should().Be("Test1");
+            configuration["TEST2"].Should().Be("TeSt2");
+            configuration["Test2"].Should().Be("TeSt2");
+            configuration["TeSt2"].Should().Be("TeSt2");
+
+            var allKeys = configuration.AsEnumerable().Select(p => p.Key).ToList();
+
+            // but when a value overwritten, the first key is still used(i.e. key preserves character case, but value)
+            allKeys.Should().Contain("TEST1");
+            allKeys.Should().Contain("TeST2");
+            allKeys.Count.Should().Be(2);
+        }
+
+        [Fact]
         public void TestPrefix_PrefixSpecified_OnlyPrefixedLoaded()
         {
             var builder = new ConfigurationBuilder();
