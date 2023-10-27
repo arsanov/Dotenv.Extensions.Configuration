@@ -20,7 +20,7 @@ namespace Dotenv
                 .Where(pair => pair.Key.StartsWith(prefix))
                 .Select(pair => new KeyValuePair<string, string>(pair.Key[prefix.Length..].Replace("__", ConfigurationPath.KeyDelimiter), pair.Value));
 
-            var result = new Dictionary<string, string>();
+            var result = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
             foreach (var pair in kvPairs)
             {
                 result[pair.Key] = pair.Value;
