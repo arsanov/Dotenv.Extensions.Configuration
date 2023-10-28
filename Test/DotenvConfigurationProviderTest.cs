@@ -30,8 +30,6 @@ namespace Test
         [Fact]
         public void TestDuplicates()
         {
-            var cd = System.IO.Directory.GetCurrentDirectory();
-            Console.WriteLine($"Current dir is {cd}");
             var builder = new ConfigurationBuilder();
 
             builder.AddDotenvFile("Assets/duplicates.env");
@@ -78,7 +76,7 @@ namespace Test
         {
             var builder = new ConfigurationBuilder();
 
-            builder.AddDotenvFile("Assets/prefix.env", false, prefix: "Prefixed_");
+            builder.AddDotenvFile("Assets/prefix.env", optional: false, prefix: "Prefixed_");
             var configuration = builder.Build();
             var allKeys = configuration.AsEnumerable().ToList();
 
@@ -135,7 +133,7 @@ namespace Test
         {
             var sourceFileName = "Assets/test1.env";
             var fileName = "Assets/test1ReloadOnChange.env";
-            File.Copy(sourceFileName, fileName,overwrite:true);
+            File.Copy(sourceFileName, fileName, overwrite: true);
             var builder = new ConfigurationBuilder();
 
             builder.AddDotenvFile(fileName, optional: false, "", reloadOnChange: true);
