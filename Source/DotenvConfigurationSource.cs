@@ -2,20 +2,17 @@ using Microsoft.Extensions.Configuration;
 
 namespace Dotenv
 {
-    public class DotenvConfigurationSource : IConfigurationSource
+    public class DotenvConfigurationSource : FileConfigurationSource
     {
-        private readonly string dotenvFilePath;
-        private readonly string prefix;
-
-        public DotenvConfigurationSource(string dotenvFilePath, string prefix)
+        public override IConfigurationProvider Build(IConfigurationBuilder builder)
         {
-            this.dotenvFilePath = dotenvFilePath;
-            this.prefix = prefix;
+            EnsureDefaults(builder);
+            return new DotenvConfigurationProvider(this);
         }
 
-        public IConfigurationProvider Build(IConfigurationBuilder builder)
-        {
-            return new DotenvConfigurationProvider(dotenvFilePath, prefix);
-        }
+        /// <summary>
+        /// Prefix for environment variables to include
+        /// </summary>
+        public string Prefix { get; set; }
     }
 }
