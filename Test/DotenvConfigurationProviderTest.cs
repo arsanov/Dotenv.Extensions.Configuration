@@ -1,13 +1,13 @@
+using System;
+using Xunit;
+using FluentAssertions;
 using Microsoft.Extensions.Configuration;
 using Dotenv.Extensions.Configuration;
-using Xunit;
-using System;
-using FluentAssertions;
 using System.Linq;
 using System.IO;
-using System.Threading.Tasks;
 using System.Threading;
-using System.Diagnostics;
+using System.Threading.Tasks;
+
 namespace Test
 {
     public class DotenvConfigurationProviderTest
@@ -76,7 +76,7 @@ namespace Test
         {
             var builder = new ConfigurationBuilder();
 
-            builder.AddDotenvFile("Assets/prefix.env", optional: false, prefix: "Prefixed_");
+            builder.AddDotenvFile("Assets/prefix.env", prefix: "Prefixed_");
             var configuration = builder.Build();
             var allKeys = configuration.AsEnumerable().ToList();
 
