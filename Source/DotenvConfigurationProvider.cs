@@ -3,20 +3,18 @@ using DotNetEnv;
 
 namespace Dotenv
 {
-    public class DotenvConfigurationProvider : ConfigurationProvider
+    public class DotenvConfigurationProvider : FileConfigurationProvider
     {
-        private readonly string dotenvFilePath;
         private readonly string prefix;
 
-        public DotenvConfigurationProvider(string dotenvFilePath, string prefix)
+        public DotenvConfigurationProvider(DotenvConfigurationSource source) : base(source)
         {
-            this.dotenvFilePath = dotenvFilePath;
-            this.prefix = prefix ?? String.Empty;
+            prefix = source.Prefix;
         }
 
-        public override void Load()
+        public override void Load(Stream stream)
         {
-            var kvPairs = Env.Load(dotenvFilePath, new LoadOptions(false))
+            var kvPairs = Env.Load(stream, new LoadOptions(false))
                 .Where(pair => pair.Key.StartsWith(prefix))
                 .Select(pair => new KeyValuePair<string, string>(pair.Key[prefix.Length..].Replace("__", ConfigurationPath.KeyDelimiter), pair.Value));
 
