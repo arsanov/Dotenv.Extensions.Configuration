@@ -145,9 +145,8 @@ namespace Test
             var completionSource = new TaskCompletionSource();
             cancellationSource.CancelAfter(TimeSpan.FromSeconds(3));
             using (cancellationSource.Token.Register(() => completionSource.SetCanceled(cancellationSource.Token)))
+            using (changeToken.RegisterChangeCallback(o => completionSource.SetResult(), null))
             {
-                changeToken.RegisterChangeCallback(o => completionSource.SetResult(), null);
-
                 configuration["AnotherValue:InnerValue:0"].Should().Be("qwe\"=zxc");
                 File.WriteAllText(fileName, "AnotherValue__InnerValue__0=tst");
                 await completionSource.Task;
