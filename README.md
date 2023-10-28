@@ -1,7 +1,7 @@
 # Dotenv.Extensions.Configuration
 
 ![Build status](https://github.com/arsanov/Dotenv.Extensions.Configuration/actions/workflows/build.yml/badge.svg)
-![Nuget](https://img.shields.io/nuget/v/Dotenv.Extensions.Configuration)
+[![Nuget](https://img.shields.io/nuget/v/Dotenv.Extensions.Configuration)](https://www.nuget.org/packages/Dotenv.Extensions.Configuration)
 
 Configuration provider extensions to use dotenv file as configuration source
 
